@@ -27,4 +27,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    download_url='https://github.com/frozenmafia/omegle_translator/archive/0.0.1.tar.gz'
 )
