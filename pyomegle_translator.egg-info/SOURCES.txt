@@ -1,0 +1,9 @@
+README.md
+setup.cfg
+setup.py
+omegle_translator/__init__.py
+pyomegle_translator.egg-info/PKG-INFO
+pyomegle_translator.egg-info/SOURCES.txt
+pyomegle_translator.egg-info/dependency_links.txt
+pyomegle_translator.egg-info/requires.txt
+pyomegle_translator.egg-info/top_level.txt

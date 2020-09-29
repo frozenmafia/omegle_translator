@@ -1,8 +1,4 @@
-if the program Crashes,restart the program by killing the terminal.
-
-enter exit() to start new Chat
-
-select your language and the language in which you want to translate.
+Select your language and the language in which you want to translate.
 
 language will be translated irrespective of the stranger's language.
 

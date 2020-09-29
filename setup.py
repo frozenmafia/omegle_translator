@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="shivank-anchal", # Replace with your own username
-    version="0.0.1",
+    name="pyomegle-translator", # Replace with your own username
+    version='0.1.2',
     author="Shivank Anchal",
     author_email="shivajay295@gmail.com",
     description="A small example package,to communicate on omegle in any language",
@@ -16,15 +16,13 @@ setuptools.setup(
     install_requires=[
         'googletrans',
         'selenium',
-        'json',
-        'threading',
-        'io',
         'WConio2'
         ],
     classifiers=[
-        "Programming Language :: Python :: 3.7.6",
+        "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    download_url='https://github.com/frozenmafia/omegle_translator/archive/0.0.1.tar.gz'
 )

@@ -12,6 +12,7 @@ from io import StringIO
 import sys
 import WConio2 as w
 from googletrans import Translator
+import os
 
 
 class Omegle_Translator():
@@ -146,7 +147,9 @@ class Omegle_Translator():
                 self.interreption = False
                 self.input_text = ''
                 self.stranger_last_message = ''
-                self.driver = webdriver.Chrome()
+                chromedriver = 'chromedriver'
+                os.environ["webdriver.chrome.driver"] = chromedriver
+                self.driver = webdriver.Chrome(chromedriver)
                 website = "https://www.omegle.com"
                 self.driver.get(website)
                 self.stranger_status_active = True
