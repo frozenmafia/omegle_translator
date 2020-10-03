@@ -36,7 +36,6 @@ class Omegle_Translator():
     def get_cwd(self):
         return os.path.dirname(os.path.abspath(__file__))
          
-
     def change_language(self):
         print(self.b.purple_text('Here is the list of language CODE corresponding to their languages respectively.'))
         print(json.dumps(self.google_lang_json, indent=4, sort_keys=True))
@@ -153,10 +152,8 @@ class Omegle_Translator():
                 self.interreption = False
                 self.input_text = ''
                 self.stranger_last_message = ''
-                chromedriver = 'chromedriver'
+                chromedriver = os.path.join(self.get_cwd,'chromedriver')
                 try:
-
-                    os.environ["webdriver.chrome.driver"] = chromedriver
                     if not self.open:
                         print(self.b.purple_text('Opening Chrome....'))
                         self.driver = webdriver.Chrome(chromedriver)
@@ -166,6 +163,7 @@ class Omegle_Translator():
 
                 except WebDriverException:
                     print(self.b.purple_text('You need to download chrome driver extension as per your chrome version from https://chromedriver.chromium.org/downloads ,and paste the extension in the directory {}'.format(self.get_cwd())))
+                    time.sleep(0.6)
                     break
 
                 website = "https://www.omegle.com"
@@ -183,6 +181,7 @@ class Omegle_Translator():
             except self.exception_s as e:
                 print(self.b.purple_text('Please Wait'))
                 self.input_text = ''
+                time.sleep(0.4)
 
     def get_stranger_text(self):
         while True:
@@ -258,10 +257,12 @@ class Omegle_Translator():
                         self.total_number_of_outputs +=1
                         new_connection.click()
                         self.input_text=''
+                        time.sleep(0.506)
                         continue
 
                 except self.exception_s as e:
                     print(self.b.purple_text('Please only type,when the cursor blinks,in the text area of the omegle website'))
+                    time.sleep(0.256)
                     break 
 
                 if text_entered == 'exit()':
@@ -311,6 +312,7 @@ class Omegle_Translator():
             except self.exception_s as e:
                 self.input_text = ''
                 print(self.b.purple_text('Please only type,when the cursor blinks,in the text area of the omegle website'))
+                time.sleep(0.3)
 
     def start(self):
         self.driver = self.open_chat_webpage()

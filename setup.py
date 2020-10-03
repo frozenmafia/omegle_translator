@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyomegle-translator", # Replace with your own username
-    version='0.1.5',
+    version='0.1.6',
     author="Shivank Anchal",
     author_email="shivajay295@gmail.com",
     description="A small example package,to communicate on omegle in any language",
