@@ -152,7 +152,7 @@ class Omegle_Translator():
                 self.interreption = False
                 self.input_text = ''
                 self.stranger_last_message = ''
-                chromedriver = os.path.join(self.get_cwd,'chromedriver')
+                chromedriver = os.path.join(self.get_cwd(),'chromedriver')
                 try:
                     if not self.open:
                         print(self.b.purple_text('Opening Chrome....'))
