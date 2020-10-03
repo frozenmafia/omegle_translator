@@ -1,8 +1,9 @@
 import googletrans
 from selenium import webdriver
 import json
-from selenium.common.exceptions import NoSuchElementException,ElementNotInteractableException,StaleElementReferenceException,UnexpectedAlertPresentException,InvalidSessionIdException
+from selenium.common.exceptions import NoSuchElementException,ElementNotInteractableException,StaleElementReferenceException,UnexpectedAlertPresentException,InvalidSessionIdException,WebDriverException
 from selenium.webdriver.common.by import By
+from httpcore._exceptions import ConnectTimeout,ConnectError,ReadError,ReadTimeout
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common import exceptions  
@@ -22,6 +23,7 @@ class Omegle_Translator():
         self.translator = Translator()
         self.google_lang_json = googletrans.LANGUAGES
         self.exception_s = (NoSuchElementException,ElementNotInteractableException,StaleElementReferenceException,UnexpectedAlertPresentException)
+        self.exceptions_http = (ConnectTimeout,ConnectError,ReadError,ReadTimeout)
         self.user_lang,self.stranger_lang  = self.change_language()
         self.stranger_status_active=False
         self.taking_input = False
@@ -29,6 +31,10 @@ class Omegle_Translator():
         self.input_text=''
         self.total_number_of_outputs = 0
         self.stranger_last_message = ''
+        self.open = False
+
+    def get_cwd(self):
+        return os.path.dirname(os.path.abspath(__file__))
          
 
     def change_language(self):
@@ -148,8 +154,20 @@ class Omegle_Translator():
                 self.input_text = ''
                 self.stranger_last_message = ''
                 chromedriver = 'chromedriver'
-                os.environ["webdriver.chrome.driver"] = chromedriver
-                self.driver = webdriver.Chrome(chromedriver)
+                try:
+
+                    os.environ["webdriver.chrome.driver"] = chromedriver
+                    if not self.open:
+                        print(self.b.purple_text('Opening Chrome....'))
+                        self.driver = webdriver.Chrome(chromedriver)
+                        self.open = True
+                    else:
+                        print(self.b.purple_text('Chrome Already Opened....'))
+
+                except WebDriverException:
+                    print(self.b.purple_text('You need to download chrome driver extension as per your chrome version from https://chromedriver.chromium.org/downloads ,and paste the extension in the directory {}'.format(self.get_cwd())))
+                    break
+
                 website = "https://www.omegle.com"
                 self.driver.get(website)
                 self.stranger_status_active = True
@@ -192,6 +210,9 @@ class Omegle_Translator():
             
             except InvalidSessionIdException:
                 break
+
+            except self.exceptions_http:
+                continue
 
     def start_chatting(self):
 

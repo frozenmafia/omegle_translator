@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: pyomegle-translator
-Version: 0.1.2
+Version: 0.1.5
 Summary: A small example package,to communicate on omegle in any language
 Home-page: https://githuself.b.com/frozenmafia/omego_transo.git
 Author: Shivank Anchal
 Author-email: shivajay295@gmail.com
 License: UNKNOWN
-Download-URL: https://github.com/frozenmafia/omegle_translator/archive/0.0.1.tar.gz
+Download-URL: https://github.com/frozenmafia/omegle_translator/archive/=0.1.2.tar.gz
 Description: Select your language and the language in which you want to translate.
         
         language will be translated irrespective of the stranger's language.
